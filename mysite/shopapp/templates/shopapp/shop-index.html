@@ -5,5 +5,13 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Hello Shop Index</h1>
+    <h1>Shop Index:</h1>
+    <p>
+    <a href="{% url 'shopapp:groups_list' %}">Groups</a>
+    </p>
+    <p>
+    <a href="{% url 'shopapp:products_list' %}">Products</a>
+    </p>
+    <a href="{% url 'shopapp:orders_list' %}">Orders</a>
+    </p>
 {% endblock %}
