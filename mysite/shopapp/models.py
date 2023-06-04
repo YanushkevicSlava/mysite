@@ -10,6 +10,9 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     archived = models.BooleanField(default=False)
 
+    def __str__(self):
+        return f"Product (pk={self.pk}, name={self.name!r})"
+
 
 class Order(models.Model):
     delivery_address = models.TextField(null=True, blank=True)
