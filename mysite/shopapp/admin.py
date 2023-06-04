@@ -16,13 +16,13 @@ class ProductAdmin(admin.ModelAdmin):
     list_display_links = "pk", "name"
     ordering = "-name", "pk"
     search_fields = "name", "pk"
-    fields = [
+    fieldsets = [
         (None, {
             "fields": ("name", "description"),
         }),
         ("Price option", {
             "fields": ("price", "discount"),
-            "classes": ("wide", "collapse"),
+            # "classes": ("wide", "collapse"),
         }),
         ("Extra option", {
             "fields": ("archived",),
