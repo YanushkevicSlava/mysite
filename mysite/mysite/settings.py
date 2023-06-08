@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # my apps
     'shopapp.apps.ShopappConfig',
+    'requestdataapp.apps.RequestdataappConfig',
 ]
 
 MIDDLEWARE = [
