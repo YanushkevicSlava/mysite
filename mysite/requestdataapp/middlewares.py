@@ -24,21 +24,24 @@ class CountRequestMiddleware:
         self.response_count = 0
         self.exceptions_count = 0
         self.request_time = {}
+        self.request_ip = {}
 
     def __call__(self, request: HttpRequest):
         time_rest = 10
-        if not self.request_time:
+        if not self.request_ip:
             print("This is first request after runserver")
         else:
             if (round(time.time()) * 1) - self.request_time["time"] < time_rest \
-                 and self.request_time["ip_address"] == request.META.get("REMOTE_ADDR"):
+                 and self.request_ip["ip_address"] == request.META.get("REMOTE_ADDR"):
                 print("It's been less than 10 seconds since your last request!")
                 return render(request, 'requestdataapp/error-time-request.html')
 
         self.request_time = {
             "time": (round(time.time()) * 1),
-            "ip_address": request.META.get("REMOTE_ADDR")
             }
+        self.request_ip = {
+            "ip_address": request.META.get("REMOTE_ADDR")
+        }
 
         self.request_count += 1
         print("request count", self.request_count)
