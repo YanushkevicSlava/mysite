@@ -25,7 +25,7 @@ def handle_file_upload(request: HttpRequest) -> HttpResponse:
         fs = FileSystemStorage()
         filename = fs.save(myfile.name, myfile)
         file_size = fs.size(filename)
-        if file_size > 2097152:
+        if file_size > 1048576:
             fs.delete(filename)
             print("file is deleted")
             return render(request, "requestdataapp/size-error.html")
