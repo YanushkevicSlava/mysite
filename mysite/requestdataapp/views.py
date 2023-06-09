@@ -21,7 +21,7 @@ def user_form(request: HttpRequest) -> HttpResponse:
 
 def handle_file_upload(request: HttpRequest) -> HttpResponse:
     if request.method == "POST" and request.FILES.get("myfile"):
-        myfile = request.FILES.get["myfile"]
+        myfile = request.FILES.get("myfile")
         fs = FileSystemStorage()
         filename = fs.save(myfile.name, myfile)
         file_size = fs.size(filename)
