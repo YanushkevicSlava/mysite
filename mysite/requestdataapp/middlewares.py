@@ -27,7 +27,7 @@ class CountRequestMiddleware:
         self.request_ip = {}
 
     def __call__(self, request: HttpRequest):
-        time_rest = 10
+        time_rest = 1
         if not self.request_ip:
             print("This is first request after runserver")
         else:

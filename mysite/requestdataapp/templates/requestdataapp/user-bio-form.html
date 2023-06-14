@@ -9,21 +9,22 @@
     <div>
         <form method="post">
             {% csrf_token %}
+            {{ form.as_p }}
 
-            <p>
-                <label for="name-id">Full name</label>
-                <input id="name-id" name="name" type="text" maxlength="100">
-            </p>
-
-            <p>
-                <label for="age">Age</label>
-                <input id="age" name="age" type="number" min="1" max="99">
-            </p>
-
-            <p>
-                <label for="bio">BIO</label>
-                <textarea id="bio" name="bio" cols="42" rows="5"></textarea>
-            </p>
+{#            <p>#}
+{#                <label for="name-id">Full name</label>#}
+{#                <input id="name-id" name="name" type="text" maxlength="100">#}
+{#            </p>#}
+{##}
+{#            <p>#}
+{#                <label for="age">Age</label>#}
+{#                <input id="age" name="age" type="number" min="1" max="99">#}
+{#            </p>#}
+{##}
+{#            <p>#}
+{#                <label for="bio">BIO</label>#}
+{#                <textarea id="bio" name="bio" cols="42" rows="5"></textarea>#}
+{#            </p>#}
 
             <button type="submit">
                 Submit
