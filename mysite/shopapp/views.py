@@ -41,12 +41,6 @@ class ProductDetailsView(DetailView):
     template_name = 'shopapp/product-details.html'
     model = Product
     context_object_name = "product"
-    # def get(self, request: HttpRequest, pk: int) -> HttpResponse:
-    #     product = get_object_or_404(Product, pk=pk)
-    #     context = {
-    #         "product": product
-    #     }
-    #     return render(request, 'shopapp/product-details.html', context=context)
 
 
 class ProductListView(ListView):
@@ -55,43 +49,11 @@ class ProductListView(ListView):
     context_object_name = "products"
     queryset = Product.objects.filter(archived=False)
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data()
-    #     context['products'] = Product.objects.all()
-    #     return context
-
-
-# def products_list(request: HttpRequest):
-#     context = {
-#         "products": Product.objects.all(),
-#     }
-#     return render(request, 'shopapp/products-list.html', context)
-
-
-# def create_product(request: HttpRequest) -> HttpResponse:
-#     if request.method == "POST":
-#         form = ProductForm(request.POST)
-#         if form.is_valid():
-#             # Product.objects.create(**form.cleaned_data)
-#             form.save()
-#             url = reverse("shopapp:products_list")
-#             return redirect(url)
-#     else:
-#         form = ProductForm()
-#     context = {
-#         "form": form,
-#     }
-#     return render(request, 'shopapp/create-product.html', context=context)
 
 class ProductCreateView(CreateView):
     model = Product
     fields = "name", "price", "description", "discount"
     success_url = reverse_lazy("shopapp:products_list")
-# def orders_lisr(request: HttpRequest):
-#     context = {
-#         "orders": Order.objects.select_related("user").prefetch_related("products").all(),
-#     }
-#     return render(request, 'shopapp/order_list.html', context)
 
 
 class ProductUpdateView(UpdateView):
@@ -133,16 +95,26 @@ class OrderDetailsView(DetailView):
     )
 
 
-def create_order(request: HttpRequest) -> HttpResponse:
-    if request.method == "POST":
-        form = OrderForm(request.POST)
-        if form.is_valid():
-            form.save()
-            url = reverse("shopapp:orders_list")
-            return redirect(url)
-    else:
-        form = OrderForm()
-    context = {
-        "form": form,
-    }
-    return render(request, 'shopapp/create-order.html', context=context)
+class OrderCreateView(CreateView):
+    model = Order
+    fields = "user", "products", "promocode"
+    success_url = reverse_lazy("shopapp:orders_list")
+
+
+class OrderUpdateView(UpdateView):
+    model = Order
+    fields = "user", "products", "promocode"
+    template_name_suffix = '_update_form'
+
+    def get_success_url(self):
+        return reverse(
+            "shopapp:order_details",
+            kwargs={"pk": self.object.pk},
+        )
+
+
+class OrderDeleteView(DeleteView):
+    model = Order
+    success_url = reverse_lazy("shopapp:orders_list")
+
+
