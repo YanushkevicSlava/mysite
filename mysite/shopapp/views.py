@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.contrib.auth.models import Group
 from .forms import ProductForm, OrderForm, GroupForm
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, \
-    UpdateView
+    UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 from .models import Product, Order
@@ -51,8 +51,9 @@ class ProductDetailsView(DetailView):
 
 class ProductListView(ListView):
     template_name = 'shopapp/products-list.html'
-    model = Product
+    # model = Product
     context_object_name = "products"
+    queryset = Product.objects.filter(archived=False)
 
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data()
@@ -103,6 +104,17 @@ class ProductUpdateView(UpdateView):
             "shopapp:product_details",
             kwargs={"pk": self.object.pk},
         )
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    success_url = reverse_lazy("shopapp:products_list")
+
+    def form_valid(self, form):
+        success_url = self.get_success_url()
+        self.object.archived = True
+        self.object.save()
+        return HttpResponseRedirect(success_url)
 
 
 class OrderListView(ListView):
