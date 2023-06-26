@@ -4,7 +4,10 @@
     Create product
 {% endblock %}
 
+
 {% block body %}
+{% if perms.foo %}
+    <p>You have permission to do something in the foo app.</p>
     <h1>Create a new product</h1>
     <div>
     <form method="post">
@@ -22,4 +25,7 @@
     <a href="{% url 'shopapp:products_list' %}"
     >Back to products list</a>
     </div>
+{% else %}
+    <p>You don't have permission to do anything in the foo app.</p>
+{% endif %}
 {% endblock %}
