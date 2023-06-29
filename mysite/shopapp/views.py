@@ -54,14 +54,14 @@ class ProductListView(ListView):
 
 class ProductCreateView(UserPassesTestMixin, CreateView):
     def test_func(self):
-        return self.request.user.is_superuser
+        return self.request.user.is_staff
     model = Product
     fields = "name", "price", "description", "discount"
     success_url = reverse_lazy("shopapp:products_list")
 
     def form_valid(self, form):
         instance = form.instance
-        instance.created_by = Model.objects.get(user=self.request.user)
+        instance.created_by = self.request.user
         instance.save()
         return super().form_valid(form)
 
