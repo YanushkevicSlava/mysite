@@ -129,3 +129,4 @@ class OrderDeleteView(DeleteView):
     success_url = reverse_lazy("shopapp:orders_list")
 
 
+
