@@ -1,5 +1,6 @@
 from string import ascii_letters
-
+from django.conf import settings
+from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
 from random import choices
@@ -52,3 +53,41 @@ class ProductDetailViewTestCase(TestCase):
             HTTP_USER_AGENT='Mozilla/5.0',
         )
         self.assertContains(response, self.product.name)
+
+
+class ProductsListViewTestCase(TestCase):
+    fixtures = [
+        'products-fixture.json',
+    ]
+
+    def test_products(self):
+        response = self.client.get(reverse("shopapp:products_list"), HTTP_USER_AGENT='Mozilla/5.0')
+        self.assertQuerysetEqual(
+            qs=list(Product.objects.filter(archived=False).all()),
+            values=(p.pk for p in response.context["products"]),
+            transform=lambda p: p.pk,
+        )
+        self.assertTemplateUsed(response, "shopapp/products-list.html")
+
+
+class OrderListViewTestCase(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.user = User.objects.create_user(username="sara_test", password="qwert")
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.user.delete()
+
+    def setUp(self) -> None:
+        self.client.force_login(self.user)
+
+    def test_order_view(self):
+        response = self.client.get(reverse("shopapp:orders_list"), HTTP_USER_AGENT='Mozilla/5.0')
+        self.assertContains(response, "Order")
+
+    def test_order_view_no_authenticated(self):
+        self.client.logout()
+        response = self.client.get(reverse("shopapp:orders_list"), HTTP_USER_AGENT='Mozilla/5.0')
+        self.assertEqual(response.status_code, 302)
+        self.assertIn(str(settings.LOGIN_URL), response.url)
