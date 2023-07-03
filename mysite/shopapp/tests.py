@@ -156,11 +156,13 @@ class OrderDetailViewTestCase(TestCase):
 class OrdersExportViewTestCase(TestCase):
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         cls.user = User.objects.create_user(username="sara_test", password="qwert", is_staff="True")
 
     @classmethod
     def tearDownClass(cls):
         cls.user.delete()
+        super().tearDownClass()
 
     def setUp(self) -> None:
         self.client.force_login(self.user)
@@ -175,10 +177,10 @@ class OrdersExportViewTestCase(TestCase):
         orders = Order.objects.order_by("id").all()
         expected_data = [
             {
-                "address": order.delivery_address,
+                "pk": order.pk,
+                "delivery_address": order.delivery_address,
                 "promocode": order.promocode,
-                "user": str(order.user_id),
-                "order": str(order.id),
+                "user": str(order.user),
                 "products": str(order.products),
             }
             for order in orders

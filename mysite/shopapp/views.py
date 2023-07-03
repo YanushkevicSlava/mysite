@@ -153,10 +153,10 @@ class OrdersDataExportView(UserPassesTestMixin,View):
         orders = Order.objects.order_by("id").all()
         orders_data = [
             {
-                "address": order.delivery_address,
+                "pk": order.pk,
+                "delivery_address": order.delivery_address,
                 "promocode": order.promocode,
-                "user": str(order.user_id),
-                "order": str(order.id),
+                "user": str(order.user),
                 "products": str(order.products),
             }
             for order in orders
