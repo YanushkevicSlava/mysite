@@ -4,7 +4,7 @@ from django.contrib.auth.models import User, Permission
 from django.test import TestCase
 from django.urls import reverse
 from random import choices
-
+from django.core import serializers
 from shopapp.models import Product, Order
 
 
@@ -171,7 +171,7 @@ class OrdersExportViewTestCase(TestCase):
         "orders-fixture.json"
     ]
 
-    def test_get_products_view(self):
+    def test_get_orders_view(self):
         response = self.client.get(reverse("shopapp:orders-export"), HTTP_USER_AGENT='Mozilla/5.0')
         self.assertEqual(response.status_code, 200)
         orders = Order.objects.order_by("id").all()
@@ -181,7 +181,9 @@ class OrdersExportViewTestCase(TestCase):
                 "delivery_address": order.delivery_address,
                 "promocode": order.promocode,
                 "user": str(order.user),
-                "products": str(order.products),
+                "products": serializers.serialize('json', order.products.all(),
+                                                  use_natural_primary_keys=True,
+                                                  fields="name"),
             }
             for order in orders
         ]

@@ -1,7 +1,11 @@
 from django.db.models import Model
+from django.forms import model_to_dict
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect, JsonResponse
 from django.contrib.auth.models import Group
+from rest_framework import serializers
+from . import models
+from django.core import serializers
 from .forms import ProductForm, OrderForm, GroupForm
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, \
@@ -144,7 +148,7 @@ class ProductsDataExportView(View):
         return JsonResponse({"products": products_data})
 
 
-class OrdersDataExportView(UserPassesTestMixin,View):
+class OrdersDataExportView(UserPassesTestMixin, View):
 
     def test_func(self):
         return self.request.user.is_staff
@@ -157,8 +161,11 @@ class OrdersDataExportView(UserPassesTestMixin,View):
                 "delivery_address": order.delivery_address,
                 "promocode": order.promocode,
                 "user": str(order.user),
-                "products": str(order.products),
+                "products": serializers.serialize('json', order.products.all(),
+                                                  use_natural_primary_keys=True,
+                                                  fields='name',),
             }
             for order in orders
         ]
         return JsonResponse({"orders": orders_data})
+
