@@ -13,7 +13,11 @@ from django.contrib.auth.models import Group
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = "name", "price", "description", "discount"
+        fields = "name", "price", "description", "discount", "preview"
+
+    images = forms.ImageField(
+        widget=forms.ClearableFileInput(attrs={"allow_multiple_selected": True}), required=False
+    )
 
 
 class OrderForm(forms.ModelForm):
@@ -26,3 +30,5 @@ class GroupForm(ModelForm):
     class Meta:
         model = Group
         fields = ['name']
+
+

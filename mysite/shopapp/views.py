@@ -13,7 +13,7 @@ from django.views.generic import TemplateView, ListView, DetailView, CreateView,
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, \
     UserPassesTestMixin
-from .models import Product, Order
+from .models import Product, Order, ProductImage
 
 
 class ShopIndexView(View):
@@ -60,7 +60,7 @@ class ProductCreateView(UserPassesTestMixin, CreateView):
     def test_func(self):
         return self.request.user.is_staff
     model = Product
-    fields = "name", "price", "description", "discount"
+    fields = "name", "price", "description", "discount", "preview"
     success_url = reverse_lazy("shopapp:products_list")
 
     def form_valid(self, form):
@@ -72,8 +72,9 @@ class ProductCreateView(UserPassesTestMixin, CreateView):
 
 class ProductUpdateView(UpdateView):
     model = Product
-    fields = "name", "price", "description", "discount"
+    # fields = "name", "price", "description", "discount", "preview"
     # template_name_suffix = '_update_form'
+    form_class = ProductForm
 
     def get_success_url(self):
         return reverse(
@@ -81,9 +82,19 @@ class ProductUpdateView(UpdateView):
             kwargs={"pk": self.object.pk},
         )
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        for image in form.files.getlist("images"):
+            ProductImage.objects.create(
+                product=self.object,
+                image=image,
+            )
+        return response
+
 
 class ProductDeleteView(DeleteView):
-    model = Product
+    # model = Product
+    queryset = Product.objects.prefetch_related("images")
     success_url = reverse_lazy("shopapp:products_list")
 
     def form_valid(self, form):
