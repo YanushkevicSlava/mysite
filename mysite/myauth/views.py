@@ -2,13 +2,16 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required, permission_required, \
     user_passes_test
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse, JsonResponse
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.views import LogoutView
 from django.views import View
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, UpdateView, ListView, DetailView
 from .models import Profile
+from .forms import ProfileEditForm
 
 
 class RegisterView(CreateView):
@@ -65,4 +68,27 @@ def get_session_view(request: HttpRequest) -> HttpResponse:
 class FooBarView(View):
     def get(self, request: HttpRequest) -> JsonResponse:
         return JsonResponse({"foo": "bar", "spam": "eggs"})
+
+
+class UsersListView(ListView):
+    model = User
+    template_name = "myauth/users-list.html"
+    context_object_name = "users"
+
+
+class ProfileUpdateView(UserPassesTestMixin, UpdateView):
+
+    def test_func(self):
+        return self.request.user.is_staff
+
+    model = Profile
+    form_class = ProfileEditForm
+
+    def get_success_url(self):
+        return reverse(
+            "myauth:about-me",
+            kwargs={"pk": self.object.pk},
+        )
+
+
 
