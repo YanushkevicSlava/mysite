@@ -87,7 +87,7 @@ class ProfileUpdateView(UserPassesTestMixin, UpdateView):
     def get_success_url(self):
         return reverse(
             "myauth:about-me",
-            kwargs={"pk": self.object.user.username},
+            kwargs={"pk": self.object.pk},
         )
 
 
@@ -95,5 +95,3 @@ class ProfileDetailView(DetailView):
     model = Profile
     template_name = "myauth/about-me.html"
 
-    def get_object(self, queryset=None):
-        pass

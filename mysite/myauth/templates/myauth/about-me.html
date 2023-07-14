@@ -15,7 +15,7 @@
         <p>BIO: {{ user.profile.bio }}</p>
         {% if user.is_authenticated or user.is_staff %}
             <div>
-                <a href="{% url 'myauth:profile_update' pk=user.pk %}"
+                <a href="{% url 'myauth:profile_update' pk=user.profile.pk %}"
                 >Update profile</a>
             </div>
         {% endif %}
