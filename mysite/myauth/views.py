@@ -33,8 +33,8 @@ class RegisterView(CreateView):
         return response
 
 
-class AboutMeView(TemplateView):
-    template_name = "myauth/about-me.html"
+# class AboutMeView(TemplateView):
+#     template_name = "myauth/about-me.html"
 
 
 class MyLogoutView(LogoutView):
@@ -87,8 +87,13 @@ class ProfileUpdateView(UserPassesTestMixin, UpdateView):
     def get_success_url(self):
         return reverse(
             "myauth:about-me",
-            kwargs={"pk": self.object.pk},
+            kwargs={"pk": self.object.user.username},
         )
 
 
+class ProfileDetailView(DetailView):
+    model = Profile
+    template_name = "myauth/about-me.html"
 
+    def get_object(self, queryset=None):
+        pass

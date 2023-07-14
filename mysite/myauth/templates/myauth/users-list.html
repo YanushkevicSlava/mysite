@@ -10,7 +10,7 @@
         <div>
             {% for user in users %}
             <div>
-                <a href="{% url 'myauth:about-me' %}"><p>Name: {{ user.username }}</p></a>
+                <a href="{% url 'myauth:profile_detail' pk=user.profile.pk %}"><p>Name: {{ user.username }}</p></a>
 
 
                 {% if user.profile.avatar %}
