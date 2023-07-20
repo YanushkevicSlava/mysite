@@ -12,6 +12,7 @@ from .views import (
     UsersListView,
     ProfileUpdateView,
     ProfileDetailView,
+    HelloWorldView,
 )
 from django.contrib.auth.views import LoginView
 
@@ -37,4 +38,5 @@ urlpatterns = [
     path("users-list/", UsersListView.as_view(), name="users-list"),
     path("profile/<int:pk>/update/", ProfileUpdateView.as_view(), name="profile_update"),
     path("profile/<int:pk>/", ProfileDetailView.as_view(), name="profile_detail"),
+    path("hello/", HelloWorldView.as_view(), name="hello")
 ]

@@ -23,7 +23,8 @@ class ShopIndexView(View):
             ('SmartTV', 2000),
         ]
         context = {
-            'products': products
+            'products': products,
+            'items': 5,
         }
         return render(request, 'shopapp/shop-index.html', context=context)
 

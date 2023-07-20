@@ -14,4 +14,9 @@
     </p>
     <a href="{% url 'shopapp:orders_list' %}">Orders</a>
     </p>
+    <div>
+        <strong>
+            You have {{ items }} item{{ items|pluralize }}
+        </strong>
+    </div>
 {% endblock %}
