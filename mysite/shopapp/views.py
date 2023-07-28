@@ -1,26 +1,38 @@
-from django.db.models import Model
-from django.forms import model_to_dict
-from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.http import HttpResponse, HttpRequest, HttpResponseRedirect, JsonResponse
+"""
+В это модуле лежат различные наборы представлений.
+
+Разные view интернет-магазина: по товарам, заказам и т.д.
+"""
+
+from django.shortcuts import render, redirect, reverse
+from django.http import HttpResponse, HttpRequest, HttpResponseRedirect, \
+    JsonResponse
 from django.contrib.auth.models import Group
 from rest_framework import serializers
-from . import models
 from django.core import serializers
-from .forms import ProductForm, OrderForm, GroupForm
+from .forms import ProductForm, GroupForm
 from django.views import View
-from django.views.generic import TemplateView, ListView, DetailView, CreateView, \
+from django.views.generic import ListView, DetailView, CreateView, \
     UpdateView, DeleteView
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, \
-    UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, \
+    PermissionRequiredMixin, UserPassesTestMixin
 from .models import Product, Order, ProductImage
 from rest_framework.viewsets import ModelViewSet
 from .serializers import ProductSerializer, OrderSerializer
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
+from drf_spectacular.utils import extend_schema
 
 
+@extend_schema(description='Product views CRUD')
 class ProductViewSet(ModelViewSet):
+    """
+    Набор представлений для действий над Product.
+
+    Полный CRUD для сущностец товара.
+    """
+
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     filter_backends = [
@@ -41,6 +53,13 @@ class ProductViewSet(ModelViewSet):
         "price",
         "discount",
     ]
+
+    @extend_schema(
+        summary="Get one product by ID",
+        description="Retrieves **product**, returns 404 if not found"
+    )
+    def retrieve(self, *args, **kwargs):
+        return super().retrieve(*args, **kwargs)
 
 
 class OrderViewSet(ModelViewSet):
@@ -222,11 +241,12 @@ class OrdersDataExportView(UserPassesTestMixin, View):
                 "delivery_address": order.delivery_address,
                 "promocode": order.promocode,
                 "user": str(order.user),
-                "products": serializers.serialize('json', order.products.all(),
-                                                  use_natural_primary_keys=True,
-                                                  fields='name',),
+                "products": serializers.serialize(
+                    'json',
+                    order.products.all(),
+                    use_natural_primary_keys=True,
+                    fields='name',),
             }
             for order in orders
         ]
         return JsonResponse({"orders": orders_data})
-
