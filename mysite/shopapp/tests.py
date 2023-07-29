@@ -67,7 +67,7 @@ class ProductsListViewTestCase(TestCase):
             values=(p.pk for p in response.context["products"]),
             transform=lambda p: p.pk,
         )
-        self.assertTemplateUsed(response, "shopapp/products-list.html")
+        self.assertTemplateUsed(response, "shopapp/articles_list.html")
 
 
 class OrderListViewTestCase(TestCase):
