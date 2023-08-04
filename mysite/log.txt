@@ -1,0 +1,10 @@
+2023-08-03 13:31:08,275 [INFO] shopapp.views Rendering shop index
+2023-08-03 13:31:10,887 [INFO] shopapp.views Rendering shop index
+2023-08-03 13:33:46,775 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/mysite/settings.py changed, reloading.
+2023-08-03 13:33:47,446 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-03 14:56:01,283 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-04 10:20:17,485 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-04 10:35:22,523 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-04 10:40:01,701 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-04 10:40:12,882 [WARNING] django.request Not Found: /
+2023-08-04 10:40:14,763 [WARNING] django.request Not Found: /favicon.ico

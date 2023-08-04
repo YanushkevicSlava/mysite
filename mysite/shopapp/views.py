@@ -23,6 +23,10 @@ from .serializers import ProductSerializer, OrderSerializer
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema
+import logging
+
+
+log = logging.getLogger(__name__)
 
 
 @extend_schema(description='Product views CRUD')
@@ -94,6 +98,8 @@ class ShopIndexView(View):
             'products': products,
             'items': 5,
         }
+        log.debug("Products for shop index: s%", products)
+        log.info("Rendering shop index")
         return render(request, 'shopapp/shop-index.html', context=context)
 
 
