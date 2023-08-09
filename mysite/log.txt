@@ -8,3 +8,177 @@
 2023-08-04 10:40:01,701 [INFO] django.utils.autoreload Watching for file changes with StatReloader
 2023-08-04 10:40:12,882 [WARNING] django.request Not Found: /
 2023-08-04 10:40:14,763 [WARNING] django.request Not Found: /favicon.ico
+2023-08-07 17:46:20,950 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-07 17:46:31,760 [WARNING] django.request Not Found: /favicon.ico
+2023-08-07 17:56:30,060 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/admin.py changed, reloading.
+2023-08-07 17:56:31,253 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-07 18:16:09,202 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/admin.py changed, reloading.
+2023-08-07 18:16:10,555 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-07 18:31:44,897 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-07 18:31:55,789 [WARNING] django.request Not Found: /favicon.ico
+2023-08-07 18:38:22,554 [ERROR] django.request Internal Server Error: /admin/shopapp/order/import-orders-csv/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/mysite/shopapp/admin.py", line 149, in import_csv
+    orders = [
+  File "/home/slava/pythonProject/mysite/shopapp/admin.py", line 150, in <listcomp>
+    Order(**row)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/base.py", line 543, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/fields/related_descriptors.py", line 266, in __set__
+    raise ValueError(
+ValueError: Cannot assign "'admin'": "Order.user" must be a "User" instance.
+2023-08-07 18:51:20,917 [ERROR] django.request Internal Server Error: /admin/shopapp/order/import-orders-csv/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/mysite/shopapp/admin.py", line 149, in import_csv
+    orders = [
+  File "/home/slava/pythonProject/mysite/shopapp/admin.py", line 150, in <listcomp>
+    Order(**row)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/base.py", line 567, in __init__
+    raise TypeError(
+TypeError: Order() got unexpected keyword arguments: 'user_verbose'
+2023-08-09 10:10:06,420 [ERROR] django.request Internal Server Error: /admin/shopapp/order/import-orders-csv/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/mysite/shopapp/admin.py", line 149, in import_csv
+    orders = [
+  File "/home/slava/pythonProject/mysite/shopapp/admin.py", line 150, in <listcomp>
+    Order(**row)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/base.py", line 543, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/fields/related_descriptors.py", line 266, in __set__
+    raise ValueError(
+ValueError: Cannot assign "'admin'": "Order.user" must be a "User" instance.
+2023-08-09 10:11:00,061 [ERROR] django.request Internal Server Error: /admin/shopapp/order/import-orders-csv/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: shopapp_order.user_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/mysite/shopapp/admin.py", line 153, in import_csv
+    Order.objects.bulk_create(orders)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/query.py", line 803, in bulk_create
+    returned_columns = self._batched_insert(
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/query.py", line 1831, in _batched_insert
+    self._insert(
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1820, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/debug_toolbar/panels/sql/tracking.py", line 246, in execute
+    return self._record(super().execute, sql, params)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/debug_toolbar/panels/sql/tracking.py", line 167, in _record
+    return method(sql, params)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/__init__.py", line 616, in execute
+    return real_execute(self, sql, params)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: shopapp_order.user_id
+2023-08-09 10:37:00,709 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-09 10:37:07,024 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-09 10:44:36,136 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-09 10:44:37,035 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-09 11:25:44,509 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-09 11:25:45,931 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-09 11:28:41,019 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/urls.py changed, reloading.
+2023-08-09 11:28:41,403 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-09 11:29:28,293 [ERROR] django.request Internal Server Error: /ru/shop/products/latest/feed/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/contrib/syndication/views.py", line 40, in __call__
+    feedgen = self.get_feed(obj, request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/contrib/syndication/views.py", line 180, in get_feed
+    for item in self._get_dynamic_attr("items", obj):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/contrib/syndication/views.py", line 105, in _get_dynamic_attr
+    return attr()
+  File "/home/slava/pythonProject/mysite/shopapp/views.py", line 41, in items
+    return Product.pbject.all()
+AttributeError: type object 'Product' has no attribute 'pbject'
+2023-08-09 11:29:57,648 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-09 11:29:58,262 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-09 11:29:59,538 [ERROR] django.request Internal Server Error: /ru/shop/products/latest/feed/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/contrib/syndication/views.py", line 40, in __call__
+    feedgen = self.get_feed(obj, request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/contrib/syndication/views.py", line 180, in get_feed
+    for item in self._get_dynamic_attr("items", obj):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/contrib/syndication/views.py", line 105, in _get_dynamic_attr
+    return attr()
+  File "/home/slava/pythonProject/mysite/shopapp/views.py", line 41, in items
+    return Product.object.all()
+AttributeError: type object 'Product' has no attribute 'object'
+2023-08-09 11:30:24,344 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-09 11:30:24,883 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-09 11:30:26,760 [ERROR] django.request Internal Server Error: /ru/shop/products/latest/feed/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/contrib/syndication/views.py", line 40, in __call__
+    feedgen = self.get_feed(obj, request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/contrib/syndication/views.py", line 187, in get_feed
+    title = self._get_dynamic_attr("item_title", item)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/contrib/syndication/views.py", line 103, in _get_dynamic_attr
+    return attr(obj)
+  File "/home/slava/pythonProject/mysite/shopapp/views.py", line 44, in item_title
+    return item.title
+AttributeError: 'Product' object has no attribute 'title'
+2023-08-09 11:31:25,025 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-09 11:31:25,494 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-09 11:31:29,934 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-09 11:31:30,251 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-09 11:58:18,075 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-09 11:58:22,337 [INFO] django.utils.autoreload Watching for file changes with StatReloader

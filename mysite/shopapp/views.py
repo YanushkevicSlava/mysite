@@ -3,7 +3,7 @@
 
 Разные view интернет-магазина: по товарам, заказам и т.д.
 """
-
+from django.contrib.syndication.views import Feed
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect, \
     JsonResponse
@@ -24,9 +24,42 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema
 import logging
+from csv import DictReader, DictWriter
+from rest_framework.decorators import action
+from rest_framework.request import Request
+from django.contrib.sitemaps import Sitemap
 
 
 log = logging.getLogger(__name__)
+
+
+class LatestProductFeed(Feed):
+    title = "Shop products (Latest)"
+    description = "Update on change and addition shop products"
+    link = reverse_lazy("shopapp:products_list")
+
+    def items(self):
+        return Product.objects.all()
+
+    def item_title(self, item: Product):
+        return item.name
+
+    def item_description(self, item: Product):
+        return item.description[:200]
+
+    def item_link(self, item: Product):
+        return reverse("shopapp:product_details", kwargs={"pk": item.pk})
+
+
+class ShopSitemap(Sitemap):
+    changefreg = "never"
+    priority = 0.5
+
+    def items(self):
+        return Product.objects.all()
+
+    def lastmod(self, obj: Product):
+        return obj.created_at
 
 
 @extend_schema(description='Product views CRUD')
@@ -64,6 +97,29 @@ class ProductViewSet(ModelViewSet):
     )
     def retrieve(self, *args, **kwargs):
         return super().retrieve(*args, **kwargs)
+
+    @action(methods=["get"], detail=False)
+    def download_csv(self, request: Request):
+        response = HttpResponse(content_type="text/csv")
+        filename = "products-export.csv"
+        response["Content-Disposition"] = f"attachment; filename={filename}"
+        queryset = self.filter_queryset(self.get_queryset())
+        fields = [
+            "name",
+            "description",
+            "price",
+            "discount",
+        ]
+        queryset = queryset.only(*fields)
+        writer = DictWriter(response, fieldnames=fields)
+        writer.writeheader()
+
+        for product in queryset:
+            writer.writerow({
+                field: getattr(product, field)
+                for field in fields
+            })
+        return response
 
 
 class OrderViewSet(ModelViewSet):
