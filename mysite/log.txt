@@ -182,3 +182,462 @@ AttributeError: 'Product' object has no attribute 'title'
 2023-08-09 11:31:30,251 [INFO] django.utils.autoreload Watching for file changes with StatReloader
 2023-08-09 11:58:18,075 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
 2023-08-09 11:58:22,337 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-09 12:16:02,809 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-09 12:16:13,667 [WARNING] django.request Not Found: /favicon.ico
+2023-08-11 06:28:26,033 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-11 06:29:00,694 [INFO] shopapp.views Rendering shop index
+2023-08-11 06:29:00,873 [ERROR] django.request Internal Server Error: /ru/shop/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/slava/pythonProject/mysite/shopapp/views.py", line 165, in get
+    return render(request, 'shopapp/shop-index.html', context=context)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/templates.py", line 102, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/templatetags/cache.py", line 84, in do_cache
+    nodelist = parser.parse(("endcache",))
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/base.py", line 558, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 29: 'endblock', expected 'endcache'. Did you forget to register or load this tag?
+2023-08-11 06:29:31,864 [INFO] shopapp.views Rendering shop index
+2023-08-11 06:29:38,108 [INFO] shopapp.views Rendering shop index
+2023-08-11 06:29:42,206 [INFO] shopapp.views Rendering shop index
+2023-08-17 06:12:24,766 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 06:13:15,657 [WARNING] django.request Not Found: /favicon.ico
+2023-08-17 06:14:03,165 [ERROR] django.request Internal Server Error: /ru/shop/users/1/orders/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/slava/pythonProject/mysite/shopapp/views.py", line 50, in get
+    return render(request, 'users_orders.html', context)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/templates.py", line 102, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: users_orders.html
+2023-08-17 06:14:35,970 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/urls.py changed, reloading.
+2023-08-17 06:14:36,868 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 06:14:38,320 [ERROR] django.request Internal Server Error: /ru/shop/users/1/orders/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/slava/pythonProject/mysite/shopapp/views.py", line 50, in get
+    return render(request, 'users_orders.html', context)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/templates.py", line 102, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: users_orders.html
+2023-08-17 06:16:43,761 [ERROR] django.request Internal Server Error: /ru/shop/users/2/orders/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/slava/pythonProject/mysite/shopapp/views.py", line 50, in get
+    return render(request, 'users_orders.html', context)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/templates.py", line 102, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: users_orders.html
+2023-08-17 06:18:00,850 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-17 06:18:01,759 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 06:18:05,287 [ERROR] django.request Internal Server Error: /ru/shop/users/2/orders/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/slava/pythonProject/mysite/shopapp/views.py", line 50, in get
+    return render(request, 'users_orders_list.html', context)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/templates.py", line 102, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: users_orders_list.html
+2023-08-17 06:22:52,287 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-17 06:22:53,027 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 06:22:55,733 [WARNING] django.request Method Not Allowed (GET): /ru/shop/users/2/orders/
+2023-08-17 06:22:55,772 [WARNING] django.request Method Not Allowed: /ru/shop/users/2/orders/
+2023-08-17 06:23:01,608 [WARNING] django.request Method Not Allowed (GET): /ru/shop/users/2/orders/
+2023-08-17 06:23:01,653 [WARNING] django.request Method Not Allowed: /ru/shop/users/2/orders/
+2023-08-17 06:24:29,508 [WARNING] django.request Method Not Allowed (GET): /ru/shop/users/1/orders/
+2023-08-17 06:24:29,551 [WARNING] django.request Method Not Allowed: /ru/shop/users/1/orders/
+2023-08-17 06:24:40,853 [WARNING] django.request Method Not Allowed (GET): /ru/shop/users/1/orders/
+2023-08-17 06:24:40,869 [WARNING] django.request Method Not Allowed: /ru/shop/users/1/orders/
+2023-08-17 06:24:51,412 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 06:24:54,389 [WARNING] django.request Method Not Allowed (GET): /ru/shop/users/1/orders/
+2023-08-17 06:24:54,426 [WARNING] django.request Method Not Allowed: /ru/shop/users/1/orders/
+2023-08-17 06:25:07,568 [WARNING] django.request Method Not Allowed (GET): /ru/shop/users/1/orders/
+2023-08-17 06:25:07,584 [WARNING] django.request Method Not Allowed: /ru/shop/users/1/orders/
+2023-08-17 06:28:48,903 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-17 06:28:50,124 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 06:28:51,417 [WARNING] django.request Method Not Allowed (GET): /ru/shop/users/1/orders/
+2023-08-17 06:28:51,492 [WARNING] django.request Method Not Allowed: /ru/shop/users/1/orders/
+2023-08-17 06:29:59,445 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-17 06:29:59,895 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 06:31:17,590 [WARNING] django.request Method Not Allowed (GET): /ru/shop/users/1/orders/
+2023-08-17 06:31:17,636 [WARNING] django.request Method Not Allowed: /ru/shop/users/1/orders/
+2023-08-17 06:32:25,166 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-17 06:32:25,696 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 06:32:26,689 [ERROR] django.request Internal Server Error: /ru/shop/users/1/orders/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/slava/pythonProject/mysite/shopapp/views.py", line 52, in get
+    return render(request, 'users_orders_list.html', context)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/templates.py", line 102, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: users_orders_list.html
+2023-08-17 06:33:48,872 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-17 06:33:49,215 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 06:34:47,814 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-17 06:34:48,251 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 06:34:49,438 [ERROR] django.request Internal Server Error: /ru/shop/users/1/orders/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/slava/pythonProject/mysite/shopapp/views.py", line 52, in get
+    return render(request, template_name='users_orders_list.html', context=context)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/templates.py", line 102, in render
+    return real_render(request, template_name, context, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: users_orders_list.html
+2023-08-17 06:36:54,346 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-17 06:36:55,429 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 06:42:07,846 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-17 06:42:08,443 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 06:42:10,986 [WARNING] django.request Method Not Allowed (GET): /ru/shop/users/1/orders/
+2023-08-17 06:42:11,021 [WARNING] django.request Method Not Allowed: /ru/shop/users/1/orders/
+2023-08-17 06:42:26,132 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-17 06:42:26,513 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 06:57:42,191 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-17 06:57:43,929 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 07:00:31,493 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-17 07:00:32,064 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 07:00:35,121 [ERROR] django.request Internal Server Error: /ru/shop/users/1/orders/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/utils/decorators.py", line 126, in _wrapper_view
+    result = middleware.process_request(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/middleware/cache.py", line 153, in process_request
+    if request.method not in ("GET", "HEAD"):
+AttributeError: 'UserOrdersListView' object has no attribute 'method'
+2023-08-17 07:01:15,041 [ERROR] django.request Internal Server Error: /ru/shop/users/1/orders/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/utils/decorators.py", line 126, in _wrapper_view
+    result = middleware.process_request(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/middleware/cache.py", line 153, in process_request
+    if request.method not in ("GET", "HEAD"):
+AttributeError: 'UserOrdersListView' object has no attribute 'method'
+2023-08-17 07:01:32,670 [ERROR] django.request Internal Server Error: /ru/shop/users/1/orders/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/utils/decorators.py", line 126, in _wrapper_view
+    result = middleware.process_request(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/middleware/cache.py", line 153, in process_request
+    if request.method not in ("GET", "HEAD"):
+AttributeError: 'UserOrdersListView' object has no attribute 'method'
+2023-08-17 07:02:30,334 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-17 07:02:31,747 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 07:10:46,457 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-17 07:10:47,175 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 07:27:26,412 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/urls.py changed, reloading.
+2023-08-17 07:27:27,377 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 07:27:35,966 [ERROR] django.request Internal Server Error: /ru/shop/users/1/orders/export/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/slava/pythonProject/mysite/shopapp/views.py", line 61, in get
+    user = get_object_or_404(User, user_id)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/shortcuts.py", line 85, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/query.py", line 623, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1533, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1380, in build_filter
+    arg, value = filter_expr
+TypeError: cannot unpack non-iterable int object
+2023-08-17 07:32:42,650 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-17 07:32:44,454 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 07:32:45,397 [ERROR] django.request Internal Server Error: /ru/shop/users/1/orders/export/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/slava/pythonProject/mysite/shopapp/views.py", line 61, in get
+    user = get_object_or_404(User, user_id)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/shortcuts.py", line 85, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/query.py", line 623, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1533, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1380, in build_filter
+    arg, value = filter_expr
+TypeError: cannot unpack non-iterable int object
+2023-08-17 07:35:40,430 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-17 07:35:40,990 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 07:35:42,211 [ERROR] django.request Internal Server Error: /ru/shop/users/1/orders/export/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/slava/pythonProject/mysite/shopapp/views.py", line 74, in get
+    return JsonResponse(serialized_data)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/http/response.py", line 724, in __init__
+    raise TypeError(
+TypeError: In order to allow non-dict objects to be serialized set the safe parameter to False.
+2023-08-17 07:36:22,275 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-17 07:36:23,036 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 07:36:23,888 [ERROR] django.request Internal Server Error: /ru/shop/users/1/orders/export/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/slava/pythonProject/mysite/shopapp/views.py", line 74, in get
+    return JsonResponse(serialized_data)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/http/response.py", line 724, in __init__
+    raise TypeError(
+TypeError: In order to allow non-dict objects to be serialized set the safe parameter to False.
+2023-08-17 07:38:02,812 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/serializers.py changed, reloading.
+2023-08-17 07:38:03,928 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 07:38:05,877 [ERROR] django.request Internal Server Error: /ru/shop/users/1/orders/export/
+Traceback (most recent call last):
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/slava/pythonProject/mysite/shopapp/views.py", line 74, in get
+    return JsonResponse(serialized_data)
+  File "/home/slava/pythonProject/venv/lib/python3.10/site-packages/django/http/response.py", line 724, in __init__
+    raise TypeError(
+TypeError: In order to allow non-dict objects to be serialized set the safe parameter to False.
+2023-08-17 07:38:42,807 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/serializers.py changed, reloading.
+2023-08-17 07:38:44,168 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 07:39:39,939 [INFO] django.utils.autoreload /home/slava/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-08-17 07:39:40,423 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-17 07:41:39,318 [WARNING] django.request Not Found: /favicon.ico
