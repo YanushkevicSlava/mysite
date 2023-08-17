@@ -7,7 +7,7 @@
 
 {% block body %}
     <h1>User {{ user.username }} create next orders:</h1>
-    {% cache 100 own %}
+    {% cache 100 'orders_'|add:owner.id %}
     <h3>Orders:</h3>
     {% if orders %}
         <div>
