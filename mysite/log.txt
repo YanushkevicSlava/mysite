@@ -643,3 +643,16 @@ TypeError: In order to allow non-dict objects to be serialized set the safe para
 2023-08-17 07:41:39,318 [WARNING] django.request Not Found: /favicon.ico
 2023-08-17 07:47:57,276 [INFO] django.utils.autoreload Watching for file changes with StatReloader
 2023-08-17 07:48:04,849 [WARNING] django.request Not Found: /favicon.ico
+2023-08-18 08:30:52,112 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-21 16:15:34,481 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-21 16:48:01,098 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-21 16:51:15,883 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-21 16:51:22,909 [WARNING] django.request Not Found: /
+2023-08-21 16:51:25,161 [WARNING] django.request Not Found: /favicon.ico
+2023-08-21 16:51:39,217 [INFO] shopapp.views Rendering shop index
+2023-08-21 16:59:39,131 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-21 17:04:33,080 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-21 17:11:28,885 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-21 17:15:30,614 [INFO] django.utils.autoreload Watching for file changes with StatReloader
+2023-08-21 17:15:39,544 [WARNING] django.request Not Found: /favicon.ico
+2023-08-24 07:17:24,564 [INFO] django.utils.autoreload Watching for file changes with StatReloader

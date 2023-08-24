@@ -13,33 +13,32 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
+from os import getenv
+import logging.config
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
-sentry_sdk.init(
-  dsn="https://2429017f654b419979cc09ecc6587a9f@o4505646189117440.ingest.sentry.io/4505646198095872",
-  integrations=[DjangoIntegration()],
-  traces_sample_rate=1.0,
-  send_default_pii=True
-)
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+DATABASE_DIR = BASE_DIR / 'database'
+DATABASE_DIR.mkdir(exist_ok=True)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2hp59!dex579rs83s^j_j%niev+(c%d0+3g3orevwy52x&w=n7'
+SECRET_KEY = getenv(
+    'DJANGO_SECRET_KEY',
+    'django-insecure-2hp59!dex579rs83s^j_j%niev+(c%d0+3g3orevwy52x&w=n7',
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = getenv('DJANGO_DEBUG', '0') == '1'
 
 ALLOWED_HOSTS = [
     '0.0.0.0',
     '127.0.0.1',
-]
+] + getenv('DJANGO_ALLOWED_HOSTS', '').split(',')
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
@@ -121,7 +120,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': DATABASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -207,57 +206,28 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
 }
 
-LOGFILE_NAME = BASE_DIR / 'log.txt'
-LOGFILE_SIZE = 1 * 1024 * 1024
-LOGFILE_COUNT = 3
+LOGLEVEL = getenv('DJANGO_LOGLEVEL', 'info').upper()
 
-LOGGING = {
+logging.config.dictConfig({
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
-        'verbose': {
-            'format': '%(asctime)s [%(levelname)s] %(name)s %(message)s',
+        'console': {
+            'format': '%(asctime)s %(levelname)s [%(name)s:%(lineno)s] %(module)s %(message)s',
         },
     },
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
-            'formatter': 'verbose',
+            'formatter': 'console',
         },
-        'logfile': {
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': LOGFILE_NAME,
-            'maxBytes': LOGFILE_SIZE,
-            'backupCount': LOGFILE_COUNT,
-            'formatter': 'verbose',
-        }
     },
-    'root': {
-        'handlers': [
-            'console',
-            'logfile',
-        ],
-        'level': 'INFO',
-    }
-}
-# LOGGING = {
-#     'version': 1,
-#     'filters': {
-#         'require_debug_true': {
-#             '()': 'django.utils.log.RequireDebugTrue',
-#         },
-#     },
-#     'handlers': {
-#         'console': {
-#             'level': 'DEBUG',
-#             'filters': ['require_debug_true'],
-#             'class': 'logging.StreamHandler',
-#         },
-#     },
-#     'loggers': {
-#         'django.db.backends': {
-#             'level': 'DEBUG',
-#             'handlers': ['console'],
-#         },
-#     },
-# }
+    'loggers': {
+        "": {
+            'level': LOGLEVEL,
+            'handlers': [
+                'console',
+            ],
+        },
+    },
+})
