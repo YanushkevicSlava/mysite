@@ -13,6 +13,7 @@ from .views import (
     ProfileUpdateView,
     ProfileDetailView,
     HelloWorldView,
+    AboutMeView,
 )
 from django.contrib.auth.views import LoginView
 
@@ -28,7 +29,7 @@ urlpatterns = [
         ),
         name="login"),
     path("logaut/", MyLogoutView.as_view(), name="logaut"),
-    # path("users-list/about-me/", AboutMeView.as_view(), name="about-me"),
+    path("users-list/about-me/", AboutMeView.as_view(), name="about-me"),
     path("register/", RegisterView.as_view(), name="register"),
     path("cookie/get/", get_cookie_view, name="cookie-get"),
     path("cookie/set/", set_cookie_view, name="cookie-set"),
