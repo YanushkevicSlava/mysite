@@ -33,8 +33,6 @@ class HelloWorldView(View):
         )
 
 
-
-
 class RegisterView(CreateView):
     form_class = UserCreationForm
     template_name = "myauth/register.html"
@@ -54,8 +52,8 @@ class RegisterView(CreateView):
         return response
 
 
-# class AboutMeView(TemplateView):
-#     template_name = "myauth/about-me.html"
+class AboutMeView(TemplateView):
+    template_name = "myauth/about-me.html"
 
 
 class MyLogoutView(LogoutView):
