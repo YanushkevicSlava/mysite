@@ -36,7 +36,7 @@ class HelloWorldView(View):
 class RegisterView(CreateView):
     form_class = UserCreationForm
     template_name = "myauth/register.html"
-    success_url = reverse_lazy("myauth:about-me")
+    success_url = reverse_lazy("shopapp:index")
 
     def form_valid(self, form):
         response = super().form_valid(form)
